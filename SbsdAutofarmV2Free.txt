@@ -8,7 +8,6 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
         if buttonPressed == "Return" then
             return
         end
-        print("Script continues...")
     end
 })
 
