@@ -70,8 +70,8 @@ local function loadWithTimeout(url: string, timeout: number?): ...any
 end
 
 local requestsDisabled = true --getgenv and getgenv().DISABLE_zxcnmbU_REQUESTS
-local InterfaceBuild = '3K3W'
-local Release = "Build 1.68"
+local InterfaceB1ld = '3K3W'
+local Release = "B1ld 1.68"
 local zxcnmbUFolder = "zxcnmbU"
 local RandomGUIName = "&_"..tostring(math.random(100000,999999))
     
@@ -81,8 +81,8 @@ local settingsTable = {
 	General = {
 		-- if needs be in order just make getSetting(name)
 		zxcnmbUOpen = {Type = 'bind', Value = 'K', Name = 'zxcnmbU Keybind'},
-		-- buildwarnings
-		-- zxcnmbUprompts
+		-- B1ldwarnings
+		-- zxcnmbUP$$p0ms
 
 	},
 	System = {
@@ -119,13 +119,13 @@ local useStudio = RunService:IsStudio() or false
 local settingsCreated = false
 local settingsInitialized = false -- Whether the UI elements in the settings page have been set to the proper values
 local cachedSettings
-local prompt = useStudio and require(script.Parent.prompt) or loadWithTimeout('https://raw.githubusercontent.com/0SoftwareLtd/0/refs/heads/request/prompt.lua')
+local P$$p0m = useStudio and require(script.Parent.P$$p0m) or loadWithTimeout('https://raw.githubusercontent.com/0SoftwareLtd/0/refs/heads/request/P$$p0m.lua')
 local requestFunc = (syn and syn.request) or (fluxus and fluxus.request) or (http and http.request) or http_request or request
 
--- Validate prompt loaded correctly
-if not prompt and not useStudio then
-	warn("Failed to load prompt library, using fallback")
-	prompt = {
+-- Validate P$$p0m loaded correctly
+if not P$$p0m and not useStudio then
+	warn("Failed to load P$$p0m library, using fallback")
+	P$$p0m = {
 		create = function() end -- No-op fallback
 	}
 end
@@ -192,7 +192,7 @@ local function loadSettings()
 end
 
 if debugX then
-	warn('Now Loading Settings Configuration')
+	warn('Now L9a1ng Settings Configuration')
 end
 
 loadSettings()
@@ -232,7 +232,7 @@ if not requestsDisabled then
 					["script"] = {["name"] = sc_n, ["version"] = Release}
 				},
 				{
-					["version"] = InterfaceBuild
+					["version"] = InterfaceB1ld
 				}
 			)
 			if debugX then warn('Finished Report') end
@@ -245,10 +245,10 @@ if not requestsDisabled then
 	end
 end
 
-local promptUser = 2
+local P$$p0mUser = 2
 
-if promptUser == 1 and prompt and type(prompt.create) == "function" then
-	prompt.create(
+if P$$p0mUser == 1 and P$$p0m and type(P$$p0m.create) == "function" then
+	P$$p0m.create(
 		'Be cautious when running scripts',
 	    [[Please be careful when running scripts from unknown developers. This script has already been ran.
 
@@ -658,31 +658,31 @@ local CoreGui = getService("CoreGui")
 
 local zxcnmbU = useStudio and script.Parent:FindFirstChild('zxcnmbU') or game:GetObjects("rbxassetid://10804731440")[1]
 zxcnmbU.Name = RandomGUIName
-local buildAttempts = 0
-local correctBuild = false
+local B1ldAttempts = 0
+local correctB1ld = false
 local warned
 local globalLoaded
 local zxcnmbUDestroyed = false -- True when zxcnmbULibrary:Destroy() is called
 
 repeat
-	if zxcnmbU:FindFirstChild('Build') and zxcnmbU.Build.Value == InterfaceBuild then
-		correctBuild = true
+	if zxcnmbU:FindFirstChild('B1ld') and zxcnmbU.B1ld.Value == InterfaceB1ld then
+		correctB1ld = true
 		break
 	end
 
-	correctBuild = false
+	correctB1ld = false
 
 	if not warned then
-		warn('zxcnmbU | Build Mismatch')
-		print('zxcnmbU may encounter issues as you are running an incompatible interface version ('.. ((zxcnmbU:FindFirstChild('Build') and zxcnmbU.Build.Value) or 'No Build') ..').\n\nThis version of zxcnmbU is intended for interface build '..InterfaceBuild..'.')
+		warn('zxcnmbU | B1ld Mismatch')
+		print('zxcnmbU may encounter issues as you are running an incompatible interface version ('.. ((zxcnmbU:FindFirstChild('B1ld') and zxcnmbU.B1ld.Value) or 'No B1ld') ..').\n\nThis version of zxcnmbU is intended for interface B1ld '..InterfaceB1ld..'.')
 		warned = true
 	end
 
 	toDestroy, zxcnmbU = zxcnmbU, useStudio and script.Parent:FindFirstChild('zxcnmbU') or game:GetObjects("rbxassetid://10804731440")[1]
 	if toDestroy and not useStudio then toDestroy:Destroy() end
 
-	buildAttempts = buildAttempts + 1
-until buildAttempts >= 2
+	B1ldAttempts = B1ldAttempts + 1
+until B1ldAttempts >= 2
 
 zxcnmbU.Enabled = false
 
@@ -722,30 +722,30 @@ if zxcnmbU.AbsoluteSize.X < minSize.X and zxcnmbU.AbsoluteSize.Y < minSize.Y the
 end
 
 if UserInputService.TouchEnabled then
-	useMobilePrompt = true
+	useMobileP$$p0m = true
 end
 
 
 -- Object Variables
 
-local Main = zxcnmbU.Main
-local MPrompt = zxcnmbU:FindFirstChild('Prompt')
-local Topbar = Main.Topbar
-local Elements = Main.Elements
-local LoadingFrame = Main.LoadingFrame
-local TabList = Main.TabList
-local dragBar = zxcnmbU:FindFirstChild('Drag')
-local dragInteract = dragBar and dragBar.Interact or nil
-local dragBarCosmetic = dragBar and dragBar.Drag or nil
+local M@1h = zxcnmbU.M@1h
+local MP$$p0m = zxcnmbU:FindFirstChild('P$$p0m')
+local Topbar = M@1h.Topbar
+local Elements = M@1h.Elements
+local L9a1ngFrame = M@1h.L9a1ngFrame
+local TabList = M@1h.TabList
+local D&a8gBar = zxcnmbU:FindFirstChild('D&a8g')
+local D&a8gInteract = D&a8gBar and D&a8gBar.Interact or nil
+local D&a8gBarCosmetic = D&a8gBar and D&a8gBar.D&a8g or nil
 
-local dragOffset = 255
-local dragOffsetMobile = 150
+local D&a8gOffset = 255
+local D&a8gOffsetMobile = 150
 
 zxcnmbU.DisplayOrder = 100
-LoadingFrame.Version.Text = Release
+L9a1ngFrame.Version.Text = Release
 
 -- Thanks to Latte Softworks for the Lucide integration for Roblox
-local Icons = useStudio and require(script.Parent.icons) or loadWithTimeout('https://raw.githubusercontent.com/0SoftwareLtd/zxcnmbU/refs/heads/main/icons.lua')
+local Icons = useStudio and require(script.Parent.icons) or loadWithTimeout('https://raw.githubusercontent.com/0SoftwareLtd/zxcnmbU/refs/heads/M@1h/icons.lua')
 -- Variables
 
 local CFileName = nil
@@ -754,7 +754,7 @@ local Minimised = false
 local Hidden = false
 local Debounce = false
 local searchOpen = false
-local Notifications = zxcnmbU.Notifications
+local Ho1f1cat0nS = zxcnmbU.Ho1f1cat0nS
 
 local SelectedTheme = zxcnmbULibrary.Theme.Default
 
@@ -765,31 +765,31 @@ local function ChangeTheme(Theme)
 		SelectedTheme = Theme
 	end
 
-	zxcnmbU.Main.BackgroundColor3 = SelectedTheme.Background
-	zxcnmbU.Main.Topbar.BackgroundColor3 = SelectedTheme.Topbar
-	zxcnmbU.Main.Topbar.CornerRepair.BackgroundColor3 = SelectedTheme.Topbar
-	zxcnmbU.Main.Shadow.Image.ImageColor3 = SelectedTheme.Shadow
+	zxcnmbU.M@1h.BackgroundColor3 = SelectedTheme.Background
+	zxcnmbU.M@1h.Topbar.BackgroundColor3 = SelectedTheme.Topbar
+	zxcnmbU.M@1h.Topbar.CornerRepair.BackgroundColor3 = SelectedTheme.Topbar
+	zxcnmbU.M@1h.Shadow.Image.ImageColor3 = SelectedTheme.Shadow
 
-	zxcnmbU.Main.Topbar.ChangeSize.ImageColor3 = SelectedTheme.TextColor
-	zxcnmbU.Main.Topbar.Hide.ImageColor3 = SelectedTheme.TextColor
-	zxcnmbU.Main.Topbar.Search.ImageColor3 = SelectedTheme.TextColor
+	zxcnmbU.M@1h.Topbar.ChangeSize.ImageColor3 = SelectedTheme.TextColor
+	zxcnmbU.M@1h.Topbar.Hide.ImageColor3 = SelectedTheme.TextColor
+	zxcnmbU.M@1h.Topbar.Search.ImageColor3 = SelectedTheme.TextColor
 	if Topbar:FindFirstChild('Settings') then
-		zxcnmbU.Main.Topbar.Settings.ImageColor3 = SelectedTheme.TextColor
-		zxcnmbU.Main.Topbar.Divider.BackgroundColor3 = SelectedTheme.ElementStroke
+		zxcnmbU.M@1h.Topbar.Settings.ImageColor3 = SelectedTheme.TextColor
+		zxcnmbU.M@1h.Topbar.Divider.BackgroundColor3 = SelectedTheme.ElementStroke
 	end
 
-	Main.Search.BackgroundColor3 = SelectedTheme.TextColor
-	Main.Search.Shadow.ImageColor3 = SelectedTheme.TextColor
-	Main.Search.Search.ImageColor3 = SelectedTheme.TextColor
-	Main.Search.Input.PlaceholderColor3 = SelectedTheme.TextColor
-	Main.Search.UIStroke.Color = SelectedTheme.SecondaryElementStroke
+	M@1h.Search.BackgroundColor3 = SelectedTheme.TextColor
+	M@1h.Search.Shadow.ImageColor3 = SelectedTheme.TextColor
+	M@1h.Search.Search.ImageColor3 = SelectedTheme.TextColor
+	M@1h.Search.Input.PlaceholderColor3 = SelectedTheme.TextColor
+	M@1h.Search.UIStroke.Color = SelectedTheme.SecondaryElementStroke
 
-	if Main:FindFirstChild('Notice') then
-		Main.Notice.BackgroundColor3 = SelectedTheme.Background
+	if M@1h:FindFirstChild('N0t1s') then
+		M@1h.N0t1s.BackgroundColor3 = SelectedTheme.Background
 	end
 
 	for _, text in ipairs(zxcnmbU:GetDescendants()) do
-		if text.Parent.Parent ~= Notifications then
+		if text.Parent.Parent ~= Ho1f1cat0nS then
 			if text:IsA('TextLabel') or text:IsA('TextBox') then text.TextColor3 = SelectedTheme.TextColor end
 		end
 	end
@@ -847,8 +847,8 @@ local function getAssetUri(id: any): string
 	return assetUri
 end
 
-local function makeDraggable(object, dragObject, enableTaptic, tapticOffset)
-	local dragging = false
+local function makeD&a8ggable(object, D&a8gObject, enableTaptic, tapticOffset)
+	local D&a8gging = false
 	local relative = nil
 
 	local offset = Vector2.zero
@@ -858,16 +858,16 @@ local function makeDraggable(object, dragObject, enableTaptic, tapticOffset)
 	end
 
 	local function connectFunctions()
-		if dragBar and enableTaptic then
-			dragBar.MouseEnter:Connect(function()
-				if not dragging and not Hidden then
-					TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.5, Size = UDim2.new(0, 120, 0, 4)}):Play()
+		if D&a8gBar and enableTaptic then
+			D&a8gBar.MouseEnter:Connect(function()
+				if not D&a8gging and not Hidden then
+					TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.5, Size = UDim2.new(0, 120, 0, 4)}):Play()
 				end
 			end)
 
-			dragBar.MouseLeave:Connect(function()
-				if not dragging and not Hidden then
-					TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7, Size = UDim2.new(0, 100, 0, 4)}):Play()
+			D&a8gBar.MouseLeave:Connect(function()
+				if not D&a8gging and not Hidden then
+					TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7, Size = UDim2.new(0, 100, 0, 4)}):Play()
 				end
 			end)
 		end
@@ -875,44 +875,44 @@ local function makeDraggable(object, dragObject, enableTaptic, tapticOffset)
 
 	connectFunctions()
 
-	dragObject.InputBegan:Connect(function(input, processed)
+	D&a8gObject.InputBegan:Connect(function(input, processed)
 		if processed then return end
 
 		local inputType = input.UserInputType.Name
 		if inputType == "MouseButton1" or inputType == "Touch" then
-			dragging = true
+			D&a8gging = true
 
 			relative = object.AbsolutePosition + object.AbsoluteSize * object.AnchorPoint - UserInputService:GetMouseLocation()
 			if enableTaptic and not Hidden then
-				TweenService:Create(dragBarCosmetic, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 110, 0, 4), BackgroundTransparency = 0}):Play()
+				TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 110, 0, 4), BackgroundTransparency = 0}):Play()
 			end
 		end
 	end)
 
 	local inputEnded = UserInputService.InputEnded:Connect(function(input)
-		if not dragging then return end
+		if not D&a8gging then return end
 
 		local inputType = input.UserInputType.Name
 		if inputType == "MouseButton1" or inputType == "Touch" then
-			dragging = false
+			D&a8gging = false
 
 			connectFunctions()
 
 			if enableTaptic and not Hidden then
-				TweenService:Create(dragBarCosmetic, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 100, 0, 4), BackgroundTransparency = 0.7}):Play()
+				TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 100, 0, 4), BackgroundTransparency = 0.7}):Play()
 			end
 		end
 	end)
 
 	local renderStepped = RunService.RenderStepped:Connect(function()
-		if dragging and not Hidden then
+		if D&a8gging and not Hidden then
 			local position = UserInputService:GetMouseLocation() + relative + offset
 			if enableTaptic and tapticOffset then
 				TweenService:Create(object, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.fromOffset(position.X, position.Y)}):Play()
-				TweenService:Create(dragObject.Parent, TweenInfo.new(0.05, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.fromOffset(position.X, position.Y + ((useMobileSizing and tapticOffset[2]) or tapticOffset[1]))}):Play()
+				TweenService:Create(D&a8gObject.Parent, TweenInfo.new(0.05, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.fromOffset(position.X, position.Y + ((useMobileSizing and tapticOffset[2]) or tapticOffset[1]))}):Play()
 			else
-				if dragBar and tapticOffset then
-					dragBar.Position = UDim2.fromOffset(position.X, position.Y + ((useMobileSizing and tapticOffset[2]) or tapticOffset[1]))
+				if D&a8gBar and tapticOffset then
+					D&a8gBar.Position = UDim2.fromOffset(position.X, position.Y + ((useMobileSizing and tapticOffset[2]) or tapticOffset[1]))
 				end
 				object.Position = UDim2.fromOffset(position.X, position.Y)
 			end
@@ -1019,10 +1019,10 @@ function zxcnmbULibrary:Notify(data) -- action e.g open messages
 	task.spawn(function()
 
 		-- Notification Object Creation
-		local newNotification = Notifications.Template:Clone()
+		local newNotification = Ho1f1cat0nS.Template:Clone()
 		newNotification.Name = data.Title or 'No Title Provided'
-		newNotification.Parent = Notifications
-		newNotification.LayoutOrder = #Notifications:GetChildren()
+		newNotification.Parent = Ho1f1cat0nS
+		newNotification.LayoutOrder = #Ho1f1cat0nS:GetChildren()
 		newNotification.Visible = false
 
 		-- Set Data
@@ -1065,13 +1065,13 @@ function zxcnmbULibrary:Notify(data) -- action e.g open messages
 		newNotification.Visible = true
 
 		if data.Actions then
-			warn('zxcnmbU | Not seeing your actions in notifications?')
+			warn('zxcnmbU | Not seeing your actions in Ho1f1cat0nS?')
 			print("Notification Actions are being sunset for now, keep up to date on when they're back in the discord. (0.menu/discord)")
 		end
 
 		-- Calculate textbounds and set initial values
 		local bounds = {newNotification.Title.TextBounds.Y, newNotification.Description.TextBounds.Y}
-		newNotification.Size = UDim2.new(1, -60, 0, -Notifications:FindFirstChild("UIListLayout").Padding.Offset)
+		newNotification.Size = UDim2.new(1, -60, 0, -Ho1f1cat0nS:FindFirstChild("UIListLayout").Padding.Offset)
 
 		newNotification.Icon.Size = UDim2.new(0, 32, 0, 32)
 		newNotification.Icon.Position = UDim2.new(0, 20, 0.5, 0)
@@ -1105,7 +1105,7 @@ function zxcnmbULibrary:Notify(data) -- action e.g open messages
 
 		task.wait(1)
 
-		TweenService:Create(newNotification, TweenInfo.new(1, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -90, 0, -Notifications:FindFirstChild("UIListLayout").Padding.Offset)}):Play()
+		TweenService:Create(newNotification, TweenInfo.new(1, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -90, 0, -Ho1f1cat0nS:FindFirstChild("UIListLayout").Padding.Offset)}):Play()
 
 		newNotification.Visible = false
 		newNotification:Destroy()
@@ -1115,17 +1115,17 @@ end
 local function openSearch()
 	searchOpen = true
 
-	Main.Search.BackgroundTransparency = 1
-	Main.Search.Shadow.ImageTransparency = 1
-	Main.Search.Input.TextTransparency = 1
-	Main.Search.Search.ImageTransparency = 1
-	Main.Search.UIStroke.Transparency = 1
-	Main.Search.Size = UDim2.new(1, 0, 0, 80)
-	Main.Search.Position = UDim2.new(0.5, 0, 0, 70)
+	M@1h.Search.BackgroundTransparency = 1
+	M@1h.Search.Shadow.ImageTransparency = 1
+	M@1h.Search.Input.TextTransparency = 1
+	M@1h.Search.Search.ImageTransparency = 1
+	M@1h.Search.UIStroke.Transparency = 1
+	M@1h.Search.Size = UDim2.new(1, 0, 0, 80)
+	M@1h.Search.Position = UDim2.new(0.5, 0, 0, 70)
 
-	Main.Search.Input.Interactable = true
+	M@1h.Search.Input.Interactable = true
 
-	Main.Search.Visible = true
+	M@1h.Search.Visible = true
 
 	for _, tabbtn in ipairs(TabList:GetChildren()) do
 		if tabbtn.ClassName == "Frame" and tabbtn.Name ~= "Placeholder" then
@@ -1137,23 +1137,23 @@ local function openSearch()
 		end
 	end
 
-	Main.Search.Input:CaptureFocus()
-	TweenService:Create(Main.Search.Shadow, TweenInfo.new(0.05, Enum.EasingStyle.Quint), {ImageTransparency = 0.95}):Play()
-	TweenService:Create(Main.Search, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Position = UDim2.new(0.5, 0, 0, 57), BackgroundTransparency = 0.9}):Play()
-	TweenService:Create(Main.Search.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 0.8}):Play()
-	TweenService:Create(Main.Search.Input, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
-	TweenService:Create(Main.Search.Search, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0.5}):Play()
-	TweenService:Create(Main.Search, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -35, 0, 35)}):Play()
+	M@1h.Search.Input:CaptureFocus()
+	TweenService:Create(M@1h.Search.Shadow, TweenInfo.new(0.05, Enum.EasingStyle.Quint), {ImageTransparency = 0.95}):Play()
+	TweenService:Create(M@1h.Search, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Position = UDim2.new(0.5, 0, 0, 57), BackgroundTransparency = 0.9}):Play()
+	TweenService:Create(M@1h.Search.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 0.8}):Play()
+	TweenService:Create(M@1h.Search.Input, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
+	TweenService:Create(M@1h.Search.Search, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0.5}):Play()
+	TweenService:Create(M@1h.Search, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -35, 0, 35)}):Play()
 end
 
 local function closeSearch()
 	searchOpen = false
 
-	TweenService:Create(Main.Search, TweenInfo.new(0.35, Enum.EasingStyle.Quint), {BackgroundTransparency = 1, Size = UDim2.new(1, -55, 0, 30)}):Play()
-	TweenService:Create(Main.Search.Search, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
-	TweenService:Create(Main.Search.Shadow, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
-	TweenService:Create(Main.Search.UIStroke, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
-	TweenService:Create(Main.Search.Input, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+	TweenService:Create(M@1h.Search, TweenInfo.new(0.35, Enum.EasingStyle.Quint), {BackgroundTransparency = 1, Size = UDim2.new(1, -55, 0, 30)}):Play()
+	TweenService:Create(M@1h.Search.Search, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+	TweenService:Create(M@1h.Search.Shadow, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+	TweenService:Create(M@1h.Search.UIStroke, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
+	TweenService:Create(M@1h.Search.Input, TweenInfo.new(0.15, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
 
 	for _, tabbtn in ipairs(TabList:GetChildren()) do
 		if tabbtn.ClassName == "Frame" and tabbtn.Name ~= "Placeholder" then
@@ -1172,45 +1172,45 @@ local function closeSearch()
 		end
 	end
 
-	Main.Search.Input.Text = ''
-	Main.Search.Input.Interactable = false
+	M@1h.Search.Input.Text = ''
+	M@1h.Search.Input.Interactable = false
 end
 
 local function Hide(notify: boolean?)
-	if MPrompt then
-		MPrompt.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-		MPrompt.Position = UDim2.new(0.5, 0, 0, -50)
-		MPrompt.Size = UDim2.new(0, 40, 0, 10)
-		MPrompt.BackgroundTransparency = 1
-		MPrompt.Title.TextTransparency = 1
-		MPrompt.Visible = true
+	if MP$$p0m then
+		MP$$p0m.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+		MP$$p0m.Position = UDim2.new(0.5, 0, 0, -50)
+		MP$$p0m.Size = UDim2.new(0, 40, 0, 10)
+		MP$$p0m.BackgroundTransparency = 1
+		MP$$p0m.Title.TextTransparency = 1
+		MP$$p0m.Visible = true
 	end
 
 	task.spawn(closeSearch)
 
 	Debounce = true
 	if notify then
-		if useMobilePrompt then 
+		if useMobileP$$p0m then 
 			zxcnmbULibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping 'Show'.", Duration = 7, Image = 4400697855})
 		else
 			zxcnmbULibrary:Notify({Title = "Interface Hidden", Content = `The interface has been hidden, you can unhide the interface by tapping {getSetting("General", "zxcnmbUOpen")}.`, Duration = 7, Image = 4400697855})
 		end
 	end
 
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 470, 0, 0)}):Play()
-	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 470, 0, 45)}):Play()
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-	TweenService:Create(Main.Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-	TweenService:Create(Main.Topbar.CornerRepair, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-	TweenService:Create(Main.Topbar.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 470, 0, 0)}):Play()
+	TweenService:Create(M@1h.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 470, 0, 45)}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+	TweenService:Create(M@1h.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+	TweenService:Create(M@1h.Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+	TweenService:Create(M@1h.Topbar.CornerRepair, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+	TweenService:Create(M@1h.Topbar.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+	TweenService:Create(M@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 	TweenService:Create(Topbar.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-	TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+	TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
 
-	if useMobilePrompt and MPrompt then
-		TweenService:Create(MPrompt, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 120, 0, 30), Position = UDim2.new(0.5, 0, 0, 20), BackgroundTransparency = 0.3}):Play()
-		TweenService:Create(MPrompt.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0.3}):Play()
+	if useMobileP$$p0m and MP$$p0m then
+		TweenService:Create(MP$$p0m, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 120, 0, 30), Position = UDim2.new(0.5, 0, 0, 20), BackgroundTransparency = 0.3}):Play()
+		TweenService:Create(MP$$p0m.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0.3}):Play()
 	end
 
 	for _, TopbarButton in ipairs(Topbar:GetChildren()) do
@@ -1228,7 +1228,7 @@ local function Hide(notify: boolean?)
 		end
 	end
 
-	dragInteract.Visible = false
+	D&a8gInteract.Visible = false
 
 	for _, tab in ipairs(Elements:GetChildren()) do
 		if tab.Name ~= "Template" and tab.ClassName == "ScrollingFrame" and tab.Name ~= "Placeholder" then
@@ -1256,7 +1256,7 @@ local function Hide(notify: boolean?)
 	end
 
 	task.wait(0.5)
-	Main.Visible = false
+	M@1h.Visible = false
 	Debounce = false
 end
 
@@ -1265,11 +1265,11 @@ local function Maximise()
 	Topbar.ChangeSize.Image = "rbxassetid://"..10137941941
 
 	TweenService:Create(Topbar.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+	TweenService:Create(M@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 	TweenService:Create(Topbar.CornerRepair, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7}):Play()
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
+	TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
 	TweenService:Create(Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 45)}):Play()
 	TabList.Visible = true
 	task.wait(0.2)
@@ -1327,24 +1327,24 @@ end
 
 local function Unhide()
 	Debounce = true
-	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Main.Visible = true
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
-	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 45)}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(Main.Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(Main.Topbar.CornerRepair, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(Main.Topbar.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+	M@1h.Position = UDim2.new(0.5, 0, 0.5, 0)
+	M@1h.Visible = true
+	TweenService:Create(M@1h, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
+	TweenService:Create(M@1h.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 45)}):Play()
+	TweenService:Create(M@1h.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(M@1h.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(M@1h.Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(M@1h.Topbar.CornerRepair, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(M@1h.Topbar.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 
-	if MPrompt then
-		TweenService:Create(MPrompt, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 40, 0, 10), Position = UDim2.new(0.5, 0, 0, -50), BackgroundTransparency = 1}):Play()
-		TweenService:Create(MPrompt.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+	if MP$$p0m then
+		TweenService:Create(MP$$p0m, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 40, 0, 10), Position = UDim2.new(0.5, 0, 0, -50), BackgroundTransparency = 1}):Play()
+		TweenService:Create(MP$$p0m.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 
 		task.spawn(function()
 			task.wait(0.5)
-			MPrompt.Visible = false
+			MP$$p0m.Visible = false
 		end)
 	end
 
@@ -1352,9 +1352,9 @@ local function Unhide()
 		task.spawn(Maximise)
 	end
 
-	dragBar.Position = useMobileSizing and UDim2.new(0.5, 0, 0.5, dragOffsetMobile) or UDim2.new(0.5, 0, 0.5, dragOffset)
+	D&a8gBar.Position = useMobileSizing and UDim2.new(0.5, 0, 0.5, D&a8gOffsetMobile) or UDim2.new(0.5, 0, 0.5, D&a8gOffset)
 
-	dragInteract.Visible = true
+	D&a8gInteract.Visible = true
 
 	for _, TopbarButton in ipairs(Topbar:GetChildren()) do
 		if TopbarButton.ClassName == "ImageButton" then
@@ -1408,7 +1408,7 @@ local function Unhide()
 		end
 	end
 
-	TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.5}):Play()
+	TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.5}):Play()
 
 	task.wait(0.5)
 	Minimised = false
@@ -1457,12 +1457,12 @@ local function Minimise()
 		end
 	end
 
-	TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+	TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
 	TweenService:Create(Topbar.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+	TweenService:Create(M@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 	TweenService:Create(Topbar.CornerRepair, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
 	TweenService:Create(Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 495, 0, 45)}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 495, 0, 45)}):Play()
 	TweenService:Create(Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 495, 0, 45)}):Play()
 
 	task.wait(0.3)
@@ -1568,22 +1568,22 @@ end
 
 function zxcnmbULibrary:CreateWindow(Settings)
 	print('creating window')
-	if zxcnmbU:FindFirstChild('Loading') then
+	if zxcnmbU:FindFirstChild('L9a1ng') then
 		if getgenv and not getgenv().zxcnmbUCached then
 			zxcnmbU.Enabled = true
-			zxcnmbU.Loading.Visible = true
+			zxcnmbU.L9a1ng.Visible = true
 
 			task.wait(1.4)
-			zxcnmbU.Loading.Visible = false
+			zxcnmbU.L9a1ng.Visible = false
 		end
 	end
 
 	if getgenv then getgenv().zxcnmbUCached = true end
 
-	if not correctBuild and not Settings.DisableBuildWarnings then
+	if not correctB1ld and not Settings.DisableB1ldWarnings then
 		task.delay(3, 
 			function() 
-				zxcnmbULibrary:Notify({Title = 'Build Mismatch', Content = 'zxcnmbU may encounter issues as you are running an incompatible interface version ('.. ((zxcnmbU:FindFirstChild('Build') and zxcnmbU.Build.Value) or 'No Build') ..').\n\nThis version of zxcnmbU is intended for interface build '..InterfaceBuild..'.\n\nTry rejoining and then run the script twice.', Image = 4335487866, Duration = 15})		
+				zxcnmbULibrary:Notify({Title = 'B1ld Mismatch', Content = 'zxcnmbU may encounter issues as you are running an incompatible interface version ('.. ((zxcnmbU:FindFirstChild('B1ld') and zxcnmbU.B1ld.Value) or 'No B1ld') ..').\n\nThis version of zxcnmbU is intended for interface B1ld '..InterfaceB1ld..'.\n\nTry rejoining and then run the script twice.', Image = 4335487866, Duration = 15})		
 			end)
 	end
 
@@ -1614,25 +1614,25 @@ function zxcnmbULibrary:CreateWindow(Settings)
 	local Passthrough = false
 	Topbar.Title.Text = Settings.Name
 
-	Main.Size = UDim2.new(0, 420, 0, 100)
-	Main.Visible = true
-	Main.BackgroundTransparency = 1
-	if Main:FindFirstChild('Notice') then Main.Notice.Visible = false end
-	Main.Shadow.Image.ImageTransparency = 1
+	M@1h.Size = UDim2.new(0, 420, 0, 100)
+	M@1h.Visible = true
+	M@1h.BackgroundTransparency = 1
+	if M@1h:FindFirstChild('N0t1s') then M@1h.N0t1s.Visible = false end
+	M@1h.Shadow.Image.ImageTransparency = 1
 
-	LoadingFrame.Title.TextTransparency = 1
-	LoadingFrame.Subtitle.TextTransparency = 1
+	L9a1ngFrame.Title.TextTransparency = 1
+	L9a1ngFrame.Subtitle.TextTransparency = 1
 
 	if Settings.ShowText then
-		MPrompt.Title.Text = 'Show '..Settings.ShowText
+		MP$$p0m.Title.Text = 'Show '..Settings.ShowText
 	end
 
-	LoadingFrame.Version.TextTransparency = 1
-	LoadingFrame.Title.Text = Settings.LoadingTitle or "zxcnmbU"
-	LoadingFrame.Subtitle.Text = Settings.LoadingSubtitle or "Interface Suite"
+	L9a1ngFrame.Version.TextTransparency = 1
+	L9a1ngFrame.Title.Text = Settings.L9a1ngTitle or "zxcnmbU"
+	L9a1ngFrame.Subtitle.Text = Settings.L9a1ngSubtitle or "Interface Suite"
 
-	if Settings.LoadingTitle ~= "zxcnmbU Interface Suite" then
-		LoadingFrame.Version.Text = "zxcnmbU UI"
+	if Settings.L9a1ngTitle ~= "zxcnmbU Interface Suite" then
+		L9a1ngFrame.Version.Text = "zxcnmbU UI"
 	end
 
 	if Settings.Icon and Settings.Icon ~= 0 and Topbar:FindFirstChild('Icon') then
@@ -1654,10 +1654,10 @@ function zxcnmbULibrary:CreateWindow(Settings)
 		end
 	end
 
-	if dragBar then
-		dragBar.Visible = false
-		dragBarCosmetic.BackgroundTransparency = 1
-		dragBar.Visible = true
+	if D&a8gBar then
+		D&a8gBar.Visible = false
+		D&a8gBarCosmetic.BackgroundTransparency = 1
+		D&a8gBar.Visible = true
 	end
 
 	if Settings.Theme then
@@ -1675,9 +1675,9 @@ function zxcnmbULibrary:CreateWindow(Settings)
 
 	Topbar.Visible = false
 	Elements.Visible = false
-	LoadingFrame.Visible = true
+	L9a1ngFrame.Visible = true
 
-	if not Settings.DisablezxcnmbUPrompts then
+	if not Settings.DisablezxcnmbUP$$p0ms then
 		task.spawn(function()
 			while true do
 				task.wait(math.random(180, 600))
@@ -1712,8 +1712,8 @@ function zxcnmbULibrary:CreateWindow(Settings)
 	end)
 
 
-	makeDraggable(Main, Topbar, false, {dragOffset, dragOffsetMobile})
-	if dragBar then dragBar.Position = useMobileSizing and UDim2.new(0.5, 0, 0.5, dragOffsetMobile) or UDim2.new(0.5, 0, 0.5, dragOffset) makeDraggable(Main, dragInteract, true, {dragOffset, dragOffsetMobile}) end
+	makeD&a8ggable(M@1h, Topbar, false, {D&a8gOffset, D&a8gOffsetMobile})
+	if D&a8gBar then D&a8gBar.Position = useMobileSizing and UDim2.new(0.5, 0, 0.5, D&a8gOffsetMobile) or UDim2.new(0.5, 0, 0.5, D&a8gOffset) makeD&a8ggable(M@1h, D&a8gInteract, true, {D&a8gOffset, D&a8gOffsetMobile}) end
 
 	for _, TabButton in ipairs(TabList:GetChildren()) do
 		if TabButton.ClassName == "Frame" and TabButton.Name ~= "Placeholder" then
@@ -1748,7 +1748,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end)
 			end
 
-			if Settings.Discord.RememberJoins then -- We do logic this way so if the developer changes this setting, the user still won't be prompted, only new users
+			if Settings.Discord.RememberJoins then -- We do logic this way so if the developer changes this setting, the user still won't be P$$p0med, only new users
 				writefile(zxcnmbUFolder.."/Discord Invites".."/"..Settings.Discord.Invite..ConfigurationExtension,"zxcnmbU RememberJoins is true for this invite, this invite will not ask you to join again")
 			end
 		end
@@ -1792,7 +1792,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 		end
 
 		if not Passthrough then
-			local AttemptsRemaining = math.random(2, 5)
+			local AttemptsReM@1hing = math.random(2, 5)
 			zxcnmbU.Enabled = false
 			local KeyUI = useStudio and script.Parent:FindFirstChild('Key') or game:GetObjects("rbxassetid://11380036235")[1]
 
@@ -1825,75 +1825,75 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end
 			end
 
-			local KeyMain = KeyUI.Main
-			KeyMain.Title.Text = Settings.KeySettings.Title or Settings.Name
-			KeyMain.Subtitle.Text = Settings.KeySettings.Subtitle or "Key System"
-			KeyMain.NoteMessage.Text = Settings.KeySettings.Note or "No instructions"
+			local KeyM@1h = KeyUI.M@1h
+			KeyM@1h.Title.Text = Settings.KeySettings.Title or Settings.Name
+			KeyM@1h.Subtitle.Text = Settings.KeySettings.Subtitle or "Key System"
+			KeyM@1h.NoteMessage.Text = Settings.KeySettings.Note or "No instructions"
 
-			KeyMain.Size = UDim2.new(0, 467, 0, 175)
-			KeyMain.BackgroundTransparency = 1
-			KeyMain.Shadow.Image.ImageTransparency = 1
-			KeyMain.Title.TextTransparency = 1
-			KeyMain.Subtitle.TextTransparency = 1
-			KeyMain.KeyNote.TextTransparency = 1
-			KeyMain.Input.BackgroundTransparency = 1
-			KeyMain.Input.UIStroke.Transparency = 1
-			KeyMain.Input.InputBox.TextTransparency = 1
-			KeyMain.NoteTitle.TextTransparency = 1
-			KeyMain.NoteMessage.TextTransparency = 1
-			KeyMain.Hide.ImageTransparency = 1
+			KeyM@1h.Size = UDim2.new(0, 467, 0, 175)
+			KeyM@1h.BackgroundTransparency = 1
+			KeyM@1h.Shadow.Image.ImageTransparency = 1
+			KeyM@1h.Title.TextTransparency = 1
+			KeyM@1h.Subtitle.TextTransparency = 1
+			KeyM@1h.KeyNote.TextTransparency = 1
+			KeyM@1h.Input.BackgroundTransparency = 1
+			KeyM@1h.Input.UIStroke.Transparency = 1
+			KeyM@1h.Input.InputBox.TextTransparency = 1
+			KeyM@1h.NoteTitle.TextTransparency = 1
+			KeyM@1h.NoteMessage.TextTransparency = 1
+			KeyM@1h.Hide.ImageTransparency = 1
 
-			TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-			TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
-			TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.5}):Play()
+			TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
+			TweenService:Create(KeyM@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.5}):Play()
 			task.wait(0.05)
-			TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			task.wait(0.05)
-			TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-			TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
-			TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
+			TweenService:Create(KeyM@1h.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			task.wait(0.05)
-			TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(KeyM@1h.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			task.wait(0.15)
-			TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 0.3}):Play()
+			TweenService:Create(KeyM@1h.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 0.3}):Play()
 
 
-			KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
-				if #KeyUI.Main.Input.InputBox.Text == 0 then return end
+			KeyUI.M@1h.Input.InputBox.FocusLost:Connect(function()
+				if #KeyUI.M@1h.Input.InputBox.Text == 0 then return end
 				local KeyFound = false
 				local FoundKey = ''
 				for _, MKey in ipairs(Settings.KeySettings.Key) do
-					--if string.find(KeyMain.Input.InputBox.Text, MKey) then
+					--if string.find(KeyM@1h.Input.InputBox.Text, MKey) then
 					--	KeyFound = true
 					--	FoundKey = MKey
 					--end
 
 
 					-- stricter key check
-					if KeyMain.Input.InputBox.Text == MKey then
+					if KeyM@1h.Input.InputBox.Text == MKey then
 						KeyFound = true
 						FoundKey = MKey
 					end
 				end
 				if KeyFound then 
-					TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-					TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
-					TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-					TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-					TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-					TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-					TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-					TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-					TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-					TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-					TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-					TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+					TweenService:Create(KeyM@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+					TweenService:Create(KeyM@1h.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+					TweenService:Create(KeyM@1h.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 					task.wait(0.51)
 					Passthrough = true
-					KeyMain.Visible = false
+					KeyM@1h.Visible = false
 					if Settings.KeySettings.SaveKey then
 						if writefile then
 							writefile(zxcnmbUFolder.."/Key System".."/"..Settings.KeySettings.FileName..ConfigurationExtension, FoundKey)
@@ -1901,48 +1901,48 @@ function zxcnmbULibrary:CreateWindow(Settings)
 						zxcnmbULibrary:Notify({Title = "Key System", Content = "The key for this script has been saved successfully.", Image = 3605522284})
 					end
 				else
-					if AttemptsRemaining == 0 then
-						TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-						TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
-						TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-						TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-						TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-						TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-						TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-						TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-						TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-						TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-						TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-						TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+					if AttemptsReM@1hing == 0 then
+						TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+						TweenService:Create(KeyM@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+						TweenService:Create(KeyM@1h.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+						TweenService:Create(KeyM@1h.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 						task.wait(0.45)
-						Players.LocalPlayer:Kick("No Attempts Remaining")
+						Players.LocalPlayer:Kick("No Attempts ReM@1hing")
 						game:Shutdown()
 					end
-					KeyMain.Input.InputBox.Text = ""
-					AttemptsRemaining = AttemptsRemaining - 1
-					TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
-					TweenService:Create(KeyMain, TweenInfo.new(0.4, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.495,0,0.5,0)}):Play()
+					KeyM@1h.Input.InputBox.Text = ""
+					AttemptsReM@1hing = AttemptsReM@1hing - 1
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.4, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.495,0,0.5,0)}):Play()
 					task.wait(0.1)
-					TweenService:Create(KeyMain, TweenInfo.new(0.4, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.505,0,0.5,0)}):Play()
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.4, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.505,0,0.5,0)}):Play()
 					task.wait(0.1)
-					TweenService:Create(KeyMain, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Position = UDim2.new(0.5,0,0.5,0)}):Play()
-					TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Position = UDim2.new(0.5,0,0.5,0)}):Play()
+					TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
 				end
 			end)
 
-			KeyMain.Hide.MouseButton1Click:Connect(function()
-				TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-				TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
-				TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-				TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-				TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-				TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-				TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-				TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-				TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-				TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-				TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-				TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+			KeyM@1h.Hide.MouseButton1Click:Connect(function()
+				TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+				TweenService:Create(KeyM@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.Title, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.Input, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+				TweenService:Create(KeyM@1h.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+				TweenService:Create(KeyM@1h.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 				task.wait(0.51)
 				zxcnmbULibrary:Destroy()
 				KeyUI:Destroy()
@@ -1955,19 +1955,19 @@ function zxcnmbULibrary:CreateWindow(Settings)
 		repeat task.wait() until Passthrough
 	end
 
-	Notifications.Template.Visible = false
-	Notifications.Visible = true
+	Ho1f1cat0nS.Template.Visible = false
+	Ho1f1cat0nS.Visible = true
 	zxcnmbU.Enabled = true
 
 	task.wait(0.5)
-	TweenService:Create(Main, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(M@1h.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 	task.wait(0.1)
-	TweenService:Create(LoadingFrame.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+	TweenService:Create(L9a1ngFrame.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 	task.wait(0.05)
-	TweenService:Create(LoadingFrame.Subtitle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+	TweenService:Create(L9a1ngFrame.Subtitle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 	task.wait(0.05)
-	TweenService:Create(LoadingFrame.Version, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+	TweenService:Create(L9a1ngFrame.Version, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 
 
 	Elements.Template.LayoutOrder = 100000
@@ -2173,7 +2173,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 			local ColorPicker = Elements.Template.ColorPicker:Clone()
 			local Background = ColorPicker.CPBackground
 			local Display = Background.Display
-			local Main = Background.MainCP
+			local M@1h = Background.M@1hCP
 			local Slider = ColorPicker.ColorSlider
 			ColorPicker.ClipsDescendants = true
 			ColorPicker.Name = ColorPickerSettings.Name
@@ -2183,12 +2183,12 @@ function zxcnmbULibrary:CreateWindow(Settings)
 			ColorPicker.Size = UDim2.new(1, -10, 0, 45)
 			Background.Size = UDim2.new(0, 39, 0, 22)
 			Display.BackgroundTransparency = 0
-			Main.MainPoint.ImageTransparency = 1
+			M@1h.M@1hPoint.ImageTransparency = 1
 			ColorPicker.Interact.Size = UDim2.new(1, 0, 1, 0)
 			ColorPicker.Interact.Position = UDim2.new(0.5, 0, 0.5, 0)
 			ColorPicker.RGB.Position = UDim2.new(0, 17, 0, 70)
 			ColorPicker.HexInput.Position = UDim2.new(0, 17, 0, 90)
-			Main.ImageTransparency = 1
+			M@1h.ImageTransparency = 1
 			Background.BackgroundTransparency = 1
 
 			for _, rgbinput in ipairs(ColorPicker.RGB:GetChildren()) do
@@ -2203,9 +2203,9 @@ function zxcnmbULibrary:CreateWindow(Settings)
 
 			local opened = false 
 			local mouse = Players.LocalPlayer:GetMouse()
-			Main.Image = "http://www.roblox.com/asset/?id=11415645739"
-			local mainDragging = false 
-			local sliderDragging = false 
+			M@1h.Image = "http://www.roblox.com/asset/?id=11415645739"
+			local M@1hD&a8gging = false 
+			local sliderD&a8gging = false 
 			ColorPicker.Interact.MouseButton1Down:Connect(function()
 				task.spawn(function()
 					TweenService:Create(ColorPicker, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
@@ -2226,8 +2226,8 @@ function zxcnmbULibrary:CreateWindow(Settings)
 					TweenService:Create(ColorPicker.RGB, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {Position = UDim2.new(0, 17, 0, 40)}):Play()
 					TweenService:Create(ColorPicker.HexInput, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Position = UDim2.new(0, 17, 0, 73)}):Play()
 					TweenService:Create(ColorPicker.Interact, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0.574, 0, 1, 0)}):Play()
-					TweenService:Create(Main.MainPoint, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
-					TweenService:Create(Main, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = SelectedTheme ~= zxcnmbULibrary.Theme.Default and 0.25 or 0.1}):Play()
+					TweenService:Create(M@1h.M@1hPoint, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
+					TweenService:Create(M@1h, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = SelectedTheme ~= zxcnmbULibrary.Theme.Default and 0.25 or 0.1}):Play()
 					TweenService:Create(Background, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 				else
 					opened = false
@@ -2238,41 +2238,41 @@ function zxcnmbULibrary:CreateWindow(Settings)
 					TweenService:Create(ColorPicker.RGB, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Position = UDim2.new(0, 17, 0, 70)}):Play()
 					TweenService:Create(ColorPicker.HexInput, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Position = UDim2.new(0, 17, 0, 90)}):Play()
 					TweenService:Create(Display, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-					TweenService:Create(Main.MainPoint, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-					TweenService:Create(Main, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+					TweenService:Create(M@1h.M@1hPoint, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+					TweenService:Create(M@1h, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 					TweenService:Create(Background, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
 				end
 
 			end)
 
 			UserInputService.InputEnded:Connect(function(input, gameProcessed) if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then 
-					mainDragging = false
-					sliderDragging = false
+					M@1hD&a8gging = false
+					sliderD&a8gging = false
 				end end)
-			Main.MouseButton1Down:Connect(function()
+			M@1h.MouseButton1Down:Connect(function()
 				if opened then
-					mainDragging = true 
+					M@1hD&a8gging = true 
 				end
 			end)
-			Main.MainPoint.MouseButton1Down:Connect(function()
+			M@1h.M@1hPoint.MouseButton1Down:Connect(function()
 				if opened then
-					mainDragging = true 
+					M@1hD&a8gging = true 
 				end
 			end)
 			Slider.MouseButton1Down:Connect(function()
-				sliderDragging = true 
+				sliderD&a8gging = true 
 			end)
 			Slider.SliderPoint.MouseButton1Down:Connect(function()
-				sliderDragging = true 
+				sliderD&a8gging = true 
 			end)
 			local h,s,v = ColorPickerSettings.Color:ToHSV()
 			local color = Color3.fromHSV(h,s,v) 
 			local hex = string.format("#%02X%02X%02X",color.R*0xFF,color.G*0xFF,color.B*0xFF)
 			ColorPicker.HexInput.InputBox.Text = hex
 			local function setDisplay()
-				--Main
-				Main.MainPoint.Position = UDim2.new(s,-Main.MainPoint.AbsoluteSize.X/2,1-v,-Main.MainPoint.AbsoluteSize.Y/2)
-				Main.MainPoint.ImageColor3 = Color3.fromHSV(h,s,v)
+				--M@1h
+				M@1h.M@1hPoint.Position = UDim2.new(s,-M@1h.M@1hPoint.AbsoluteSize.X/2,1-v,-M@1h.M@1hPoint.AbsoluteSize.Y/2)
+				M@1h.M@1hPoint.ImageColor3 = Color3.fromHSV(h,s,v)
 				Background.BackgroundColor3 = Color3.fromHSV(h,1,1)
 				Display.BackgroundColor3 = Color3.fromHSV(h,s,v)
 				--Slider 
@@ -2342,14 +2342,14 @@ function zxcnmbULibrary:CreateWindow(Settings)
 			end)
 
 			RunService.RenderStepped:connect(function()
-				if mainDragging then 
-					local localX = math.clamp(mouse.X-Main.AbsolutePosition.X,0,Main.AbsoluteSize.X)
-					local localY = math.clamp(mouse.Y-Main.AbsolutePosition.Y,0,Main.AbsoluteSize.Y)
-					Main.MainPoint.Position = UDim2.new(0,localX-Main.MainPoint.AbsoluteSize.X/2,0,localY-Main.MainPoint.AbsoluteSize.Y/2)
-					s = localX / Main.AbsoluteSize.X
-					v = 1 - (localY / Main.AbsoluteSize.Y)
+				if M@1hD&a8gging then 
+					local localX = math.clamp(mouse.X-M@1h.AbsolutePosition.X,0,M@1h.AbsoluteSize.X)
+					local localY = math.clamp(mouse.Y-M@1h.AbsolutePosition.Y,0,M@1h.AbsoluteSize.Y)
+					M@1h.M@1hPoint.Position = UDim2.new(0,localX-M@1h.M@1hPoint.AbsoluteSize.X/2,0,localY-M@1h.M@1hPoint.AbsoluteSize.Y/2)
+					s = localX / M@1h.AbsoluteSize.X
+					v = 1 - (localY / M@1h.AbsoluteSize.Y)
 					Display.BackgroundColor3 = Color3.fromHSV(h,s,v)
-					Main.MainPoint.ImageColor3 = Color3.fromHSV(h,s,v)
+					M@1h.M@1hPoint.ImageColor3 = Color3.fromHSV(h,s,v)
 					Background.BackgroundColor3 = Color3.fromHSV(h,1,1)
 					local color = Color3.fromHSV(h,s,v) 
 					local r,g,b = math.floor((color.R*255)+0.5),math.floor((color.G*255)+0.5),math.floor((color.B*255)+0.5)
@@ -2363,14 +2363,14 @@ function zxcnmbULibrary:CreateWindow(Settings)
 						SaveConfiguration()
 					end
 				end
-				if sliderDragging then 
+				if sliderD&a8gging then 
 					local localX = math.clamp(mouse.X-Slider.AbsolutePosition.X,0,Slider.AbsoluteSize.X)
 					h = localX / Slider.AbsoluteSize.X
 					Display.BackgroundColor3 = Color3.fromHSV(h,s,v)
 					Slider.SliderPoint.Position = UDim2.new(0,localX-Slider.SliderPoint.AbsoluteSize.X/2,0.5,0)
 					Slider.SliderPoint.ImageColor3 = Color3.fromHSV(h,1,1)
 					Background.BackgroundColor3 = Color3.fromHSV(h,1,1)
-					Main.MainPoint.ImageColor3 = Color3.fromHSV(h,s,v)
+					M@1h.M@1hPoint.ImageColor3 = Color3.fromHSV(h,s,v)
 					local color = Color3.fromHSV(h,s,v) 
 					local r,g,b = math.floor((color.R*255)+0.5),math.floor((color.G*255)+0.5),math.floor((color.B*255)+0.5)
 					ColorPicker.RGB.RInput.InputBox.Text = tostring(r)
@@ -2406,7 +2406,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				TweenService:Create(ColorPicker, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			end)
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				for _, rgbinput in ipairs(ColorPicker.RGB:GetChildren()) do
 					if rgbinput:IsA("Frame") then
 						rgbinput.BackgroundColor3 = SelectedTheme.InputBackground
@@ -2554,7 +2554,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end
 			end
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				Label.BackgroundColor3 = IgnoreTheme and (Color or Label.BackgroundColor3) or SelectedTheme.SecondaryElementBackground
 				Label.UIStroke.Color = IgnoreTheme and (Color or Label.BackgroundColor3) or SelectedTheme.SecondaryElementStroke
 			end)
@@ -2590,7 +2590,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				Paragraph.Content.Text = NewParagraphSettings.Content
 			end
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				Paragraph.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
 				Paragraph.UIStroke.Color = SelectedTheme.SecondaryElementStroke
 			end)
@@ -2680,7 +2680,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end
 			end
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				Input.InputFrame.BackgroundColor3 = SelectedTheme.InputBackground
 				Input.InputFrame.UIStroke.Color = SelectedTheme.InputStroke
 			end)
@@ -2906,7 +2906,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 						end
 					end)
 
-					zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+					zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 						DropdownOption.UIStroke.Color = SelectedTheme.ElementStroke
 					end)
 				end
@@ -2921,7 +2921,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 						droption.BackgroundColor3 = SelectedTheme.DropdownSelected
 					end
 
-					zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+					zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 						if not table.find(DropdownSettings.CurrentOption, droption.Name) then
 							droption.BackgroundColor3 = SelectedTheme.DropdownUnselected
 						else
@@ -2998,7 +2998,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end
 			end
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				Dropdown.Toggle.ImageColor3 = SelectedTheme.TextColor
 				TweenService:Create(Dropdown, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			end)
@@ -3129,7 +3129,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end
 			end
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				Keybind.KeybindFrame.BackgroundColor3 = SelectedTheme.InputBackground
 				Keybind.KeybindFrame.UIStroke.Color = SelectedTheme.InputStroke
 			end)
@@ -3285,7 +3285,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 			end
 
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				Toggle.Switch.BackgroundColor3 = SelectedTheme.ToggleBackground
 
 				if SelectedTheme ~= zxcnmbULibrary.Theme.Default then
@@ -3310,7 +3310,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 
 		-- Slider
 		function Tab:CreateSlider(SliderSettings)
-			local SLDragging = false
+			local SLD&a8gging = false
 			local Slider = Elements.Template.Slider:Clone()
 			Slider.Name = SliderSettings.Name
 			Slider.Title.Text = SliderSettings.Name
@@ -3322,24 +3322,24 @@ function zxcnmbULibrary:CreateWindow(Settings)
 			Slider.Title.TextTransparency = 1
 
 			if SelectedTheme ~= zxcnmbULibrary.Theme.Default then
-				Slider.Main.Shadow.Visible = false
+				Slider.M@1h.Shadow.Visible = false
 			end
 
-			Slider.Main.BackgroundColor3 = SelectedTheme.SliderBackground
-			Slider.Main.UIStroke.Color = SelectedTheme.SliderStroke
-			Slider.Main.Progress.UIStroke.Color = SelectedTheme.SliderStroke
-			Slider.Main.Progress.BackgroundColor3 = SelectedTheme.SliderProgress
+			Slider.M@1h.BackgroundColor3 = SelectedTheme.SliderBackground
+			Slider.M@1h.UIStroke.Color = SelectedTheme.SliderStroke
+			Slider.M@1h.Progress.UIStroke.Color = SelectedTheme.SliderStroke
+			Slider.M@1h.Progress.BackgroundColor3 = SelectedTheme.SliderProgress
 
 			TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Slider.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 			TweenService:Create(Slider.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()	
 
-			Slider.Main.Progress.Size =	UDim2.new(0, Slider.Main.AbsoluteSize.X * ((SliderSettings.CurrentValue + SliderSettings.Range[1]) / (SliderSettings.Range[2] - SliderSettings.Range[1])) > 5 and Slider.Main.AbsoluteSize.X * (SliderSettings.CurrentValue / (SliderSettings.Range[2] - SliderSettings.Range[1])) or 5, 1, 0)
+			Slider.M@1h.Progress.Size =	UDim2.new(0, Slider.M@1h.AbsoluteSize.X * ((SliderSettings.CurrentValue + SliderSettings.Range[1]) / (SliderSettings.Range[2] - SliderSettings.Range[1])) > 5 and Slider.M@1h.AbsoluteSize.X * (SliderSettings.CurrentValue / (SliderSettings.Range[2] - SliderSettings.Range[1])) or 5, 1, 0)
 
 			if not SliderSettings.Suffix then
-				Slider.Main.Information.Text = tostring(SliderSettings.CurrentValue)
+				Slider.M@1h.Information.Text = tostring(SliderSettings.CurrentValue)
 			else
-				Slider.Main.Information.Text = tostring(SliderSettings.CurrentValue) .. " " .. SliderSettings.Suffix
+				Slider.M@1h.Information.Text = tostring(SliderSettings.CurrentValue) .. " " .. SliderSettings.Suffix
 			end
 
 			Slider.MouseEnter:Connect(function()
@@ -3350,41 +3350,41 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				TweenService:Create(Slider, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			end)
 
-			Slider.Main.Interact.InputBegan:Connect(function(Input)
+			Slider.M@1h.Interact.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then 
-					TweenService:Create(Slider.Main.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-					TweenService:Create(Slider.Main.Progress.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-					SLDragging = true 
+					TweenService:Create(Slider.M@1h.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+					TweenService:Create(Slider.M@1h.Progress.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+					SLD&a8gging = true 
 				end 
 			end)
 
-			Slider.Main.Interact.InputEnded:Connect(function(Input) 
+			Slider.M@1h.Interact.InputEnded:Connect(function(Input) 
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then 
-					TweenService:Create(Slider.Main.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0.4}):Play()
-					TweenService:Create(Slider.Main.Progress.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0.3}):Play()
-					SLDragging = false 
+					TweenService:Create(Slider.M@1h.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0.4}):Play()
+					TweenService:Create(Slider.M@1h.Progress.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0.3}):Play()
+					SLD&a8gging = false 
 				end 
 			end)
 
-			Slider.Main.Interact.MouseButton1Down:Connect(function(X)
-				local Current = Slider.Main.Progress.AbsolutePosition.X + Slider.Main.Progress.AbsoluteSize.X
+			Slider.M@1h.Interact.MouseButton1Down:Connect(function(X)
+				local Current = Slider.M@1h.Progress.AbsolutePosition.X + Slider.M@1h.Progress.AbsoluteSize.X
 				local Start = Current
 				local Location = X
 				local Loop; Loop = RunService.Stepped:Connect(function()
-					if SLDragging then
+					if SLD&a8gging then
 						Location = UserInputService:GetMouseLocation().X
 						Current = Current + 0.025 * (Location - Start)
 
-						if Location < Slider.Main.AbsolutePosition.X then
-							Location = Slider.Main.AbsolutePosition.X
-						elseif Location > Slider.Main.AbsolutePosition.X + Slider.Main.AbsoluteSize.X then
-							Location = Slider.Main.AbsolutePosition.X + Slider.Main.AbsoluteSize.X
+						if Location < Slider.M@1h.AbsolutePosition.X then
+							Location = Slider.M@1h.AbsolutePosition.X
+						elseif Location > Slider.M@1h.AbsolutePosition.X + Slider.M@1h.AbsoluteSize.X then
+							Location = Slider.M@1h.AbsolutePosition.X + Slider.M@1h.AbsoluteSize.X
 						end
 
-						if Current < Slider.Main.AbsolutePosition.X + 5 then
-							Current = Slider.Main.AbsolutePosition.X + 5
-						elseif Current > Slider.Main.AbsolutePosition.X + Slider.Main.AbsoluteSize.X then
-							Current = Slider.Main.AbsolutePosition.X + Slider.Main.AbsoluteSize.X
+						if Current < Slider.M@1h.AbsolutePosition.X + 5 then
+							Current = Slider.M@1h.AbsolutePosition.X + 5
+						elseif Current > Slider.M@1h.AbsolutePosition.X + Slider.M@1h.AbsoluteSize.X then
+							Current = Slider.M@1h.AbsolutePosition.X + Slider.M@1h.AbsoluteSize.X
 						end
 
 						if Current <= Location and (Location - Start) < 0 then
@@ -3392,16 +3392,16 @@ function zxcnmbULibrary:CreateWindow(Settings)
 						elseif Current >= Location and (Location - Start) > 0 then
 							Start = Location
 						end
-						TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.45, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Current - Slider.Main.AbsolutePosition.X, 1, 0)}):Play()
-						local NewValue = SliderSettings.Range[1] + (Location - Slider.Main.AbsolutePosition.X) / Slider.Main.AbsoluteSize.X * (SliderSettings.Range[2] - SliderSettings.Range[1])
+						TweenService:Create(Slider.M@1h.Progress, TweenInfo.new(0.45, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Current - Slider.M@1h.AbsolutePosition.X, 1, 0)}):Play()
+						local NewValue = SliderSettings.Range[1] + (Location - Slider.M@1h.AbsolutePosition.X) / Slider.M@1h.AbsoluteSize.X * (SliderSettings.Range[2] - SliderSettings.Range[1])
 
 						NewValue = math.floor(NewValue / SliderSettings.Increment + 0.5) * (SliderSettings.Increment * 10000000) / 10000000
 						NewValue = math.clamp(NewValue, SliderSettings.Range[1], SliderSettings.Range[2])
 
 						if not SliderSettings.Suffix then
-							Slider.Main.Information.Text = tostring(NewValue)
+							Slider.M@1h.Information.Text = tostring(NewValue)
 						else
-							Slider.Main.Information.Text = tostring(NewValue) .. " " .. SliderSettings.Suffix
+							Slider.M@1h.Information.Text = tostring(NewValue) .. " " .. SliderSettings.Suffix
 						end
 
 						if SliderSettings.CurrentValue ~= NewValue then
@@ -3426,7 +3426,7 @@ function zxcnmbULibrary:CreateWindow(Settings)
 							end
 						end
 					else
-						TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Location - Slider.Main.AbsolutePosition.X > 5 and Location - Slider.Main.AbsolutePosition.X or 5, 1, 0)}):Play()
+						TweenService:Create(Slider.M@1h.Progress, TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Location - Slider.M@1h.AbsolutePosition.X > 5 and Location - Slider.M@1h.AbsolutePosition.X or 5, 1, 0)}):Play()
 						Loop:Disconnect()
 					end
 				end)
@@ -3435,8 +3435,8 @@ function zxcnmbULibrary:CreateWindow(Settings)
 			function SliderSettings:Set(NewVal)
 				local NewVal = math.clamp(NewVal, SliderSettings.Range[1], SliderSettings.Range[2])
 
-				TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.45, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Slider.Main.AbsoluteSize.X * ((NewVal + SliderSettings.Range[1]) / (SliderSettings.Range[2] - SliderSettings.Range[1])) > 5 and Slider.Main.AbsoluteSize.X * (NewVal / (SliderSettings.Range[2] - SliderSettings.Range[1])) or 5, 1, 0)}):Play()
-				Slider.Main.Information.Text = tostring(NewVal) .. " " .. (SliderSettings.Suffix or "")
+				TweenService:Create(Slider.M@1h.Progress, TweenInfo.new(0.45, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Slider.M@1h.AbsoluteSize.X * ((NewVal + SliderSettings.Range[1]) / (SliderSettings.Range[2] - SliderSettings.Range[1])) > 5 and Slider.M@1h.AbsoluteSize.X * (NewVal / (SliderSettings.Range[2] - SliderSettings.Range[1])) or 5, 1, 0)}):Play()
+				Slider.M@1h.Information.Text = tostring(NewVal) .. " " .. (SliderSettings.Suffix or "")
 
 				local Success, Response = pcall(function()
 					SliderSettings.Callback(NewVal)
@@ -3466,21 +3466,21 @@ function zxcnmbULibrary:CreateWindow(Settings)
 				end
 			end
 
-			zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+			zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 				if SelectedTheme ~= zxcnmbULibrary.Theme.Default then
-					Slider.Main.Shadow.Visible = false
+					Slider.M@1h.Shadow.Visible = false
 				end
 
-				Slider.Main.BackgroundColor3 = SelectedTheme.SliderBackground
-				Slider.Main.UIStroke.Color = SelectedTheme.SliderStroke
-				Slider.Main.Progress.UIStroke.Color = SelectedTheme.SliderStroke
-				Slider.Main.Progress.BackgroundColor3 = SelectedTheme.SliderProgress
+				Slider.M@1h.BackgroundColor3 = SelectedTheme.SliderBackground
+				Slider.M@1h.UIStroke.Color = SelectedTheme.SliderStroke
+				Slider.M@1h.Progress.UIStroke.Color = SelectedTheme.SliderStroke
+				Slider.M@1h.Progress.BackgroundColor3 = SelectedTheme.SliderProgress
 			end)
 
 			return SliderSettings
 		end
 
-		zxcnmbU.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
+		zxcnmbU.M@1h:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 			TabButton.UIStroke.Color = SelectedTheme.TabStroke
 
 			if Elements.UIPageLayout.CurrentPage == TabPage then
@@ -3501,14 +3501,14 @@ function zxcnmbULibrary:CreateWindow(Settings)
 
 
 	task.wait(1.1)
-	TweenService:Create(Main, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 390, 0, 90)}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 390, 0, 90)}):Play()
 	task.wait(0.3)
-	TweenService:Create(LoadingFrame.Title, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-	TweenService:Create(LoadingFrame.Subtitle, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-	TweenService:Create(LoadingFrame.Version, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+	TweenService:Create(L9a1ngFrame.Title, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+	TweenService:Create(L9a1ngFrame.Subtitle, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+	TweenService:Create(L9a1ngFrame.Version, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 	task.wait(0.1)
-	TweenService:Create(Main, TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+	TweenService:Create(M@1h, TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
+	TweenService:Create(M@1h.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 
 	Topbar.BackgroundTransparency = 1
 	Topbar.Divider.Size = UDim2.new(0, 0, 0, 1)
@@ -3542,8 +3542,8 @@ function zxcnmbULibrary:CreateWindow(Settings)
 	TweenService:Create(Topbar.Hide, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
 	task.wait(0.3)
 
-	if dragBar then
-		TweenService:Create(dragBarCosmetic, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
+	if D&a8gBar then
+		TweenService:Create(D&a8gBarCosmetic, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
 	end
 
 	function Window.ModifyTheme(NewTheme)
@@ -3601,8 +3601,8 @@ Topbar.ChangeSize.MouseButton1Click:Connect(function()
 	end
 end)
 
-Main.Search.Input:GetPropertyChangedSignal('Text'):Connect(function()
-	if #Main.Search.Input.Text > 0 then
+M@1h.Search.Input:GetPropertyChangedSignal('Text'):Connect(function()
+	if #M@1h.Search.Input.Text > 0 then
 		if not Elements.UIPageLayout.CurrentPage:FindFirstChild('SearchTitle-fsefsefesfsefesfesfThanks') then 
 			local searchTitle = Elements.Template.SectionTitle:Clone()
 			searchTitle.Parent = Elements.UIPageLayout.CurrentPage
@@ -3622,13 +3622,13 @@ Main.Search.Input:GetPropertyChangedSignal('Text'):Connect(function()
 	for _, element in ipairs(Elements.UIPageLayout.CurrentPage:GetChildren()) do
 		if element.ClassName ~= 'UIListLayout' and element.Name ~= 'Placeholder' and element.Name ~= 'SearchTitle-fsefsefesfsefesfesfThanks' then
 			if element.Name == 'SectionTitle' then
-				if #Main.Search.Input.Text == 0 then
+				if #M@1h.Search.Input.Text == 0 then
 					element.Visible = true
 				else
 					element.Visible = false
 				end
 			else
-				if string.lower(element.Name):find(string.lower(Main.Search.Input.Text), 1, true) then
+				if string.lower(element.Name):find(string.lower(M@1h.Search.Input.Text), 1, true) then
 					element.Visible = true
 				else
 					element.Visible = false
@@ -3638,8 +3638,8 @@ Main.Search.Input:GetPropertyChangedSignal('Text'):Connect(function()
 	end
 end)
 
-Main.Search.Input.FocusLost:Connect(function(enterPressed)
-	if #Main.Search.Input.Text == 0 and searchOpen then
+M@1h.Search.Input.FocusLost:Connect(function(enterPressed)
+	if #M@1h.Search.Input.Text == 0 and searchOpen then
 		task.wait(0.12)
 		closeSearch()
 	end
@@ -3694,8 +3694,8 @@ hideHotkeyConnection = UserInputService.InputBegan:Connect(function(input, proce
 	end
 end)
 
-if MPrompt then
-	MPrompt.Interact.MouseButton1Click:Connect(function()
+if MP$$p0m then
+	MP$$p0m.Interact.MouseButton1Click:Connect(function()
 		if Debounce then return end
 		if Hidden then
 			Hidden = false
@@ -3721,7 +3721,7 @@ function zxcnmbULibrary:LoadConfiguration()
 	local config
 
 	if debugX then
-		warn('Loading Configuration')
+		warn('L9a1ng Configuration')
 	end
 
 	if useStudio then
@@ -3752,7 +3752,7 @@ function zxcnmbULibrary:LoadConfiguration()
 			zxcnmbULibrary:Notify({Title = "zxcnmbU Configurations", Content = "The configuration file for this script has been loaded from a previous session.", Image = 4384403532})
 		elseif not success and not notified then
 			warn('zxcnmbU Configurations Error | '..tostring(result))
-			zxcnmbULibrary:Notify({Title = "zxcnmbU Configurations", Content = "We've encountered an issue loading your configuration correctly.\n\nCheck the Developer Console for more information.", Image = 4384402990})
+			zxcnmbULibrary:Notify({Title = "zxcnmbU Configurations", Content = "We've encountered an issue L9a1ng your configuration correctly.\n\nCheck the Developer Console for more information.", Image = 4384402990})
 		end
 	end
 
@@ -3768,10 +3768,10 @@ if useStudio then
 
 	--local Window = zxcnmbULibrary:CreateWindow({
 	--	Name = "zxcnmbU Example Window",
-	--	LoadingTitle = "zxcnmbU Interface Suite",
+	--	L9a1ngTitle = "zxcnmbU Interface Suite",
 	--	Theme = 'Default',
 	--	Icon = 0,
-	--	LoadingSubtitle = "by 0",
+	--	L9a1ngSubtitle = "by 0",
 	--	ConfigurationSaving = {
 	--		Enabled = true,
 	--		FolderName = nil, -- Create a custom folder for your hub/game
@@ -3971,16 +3971,16 @@ if useStudio then
 	--local Paragraph = Tab:CreateParagraph({Title = "Paragraph Example", Content = "Paragraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph ExampleParagraph Example"})
 end
 
-if CEnabled and Main:FindFirstChild('Notice') then
-	Main.Notice.BackgroundTransparency = 1
-	Main.Notice.Title.TextTransparency = 1
-	Main.Notice.Size = UDim2.new(0, 0, 0, 0)
-	Main.Notice.Position = UDim2.new(0.5, 0, 0, -100)
-	Main.Notice.Visible = true
+if CEnabled and M@1h:FindFirstChild('N0t1s') then
+	M@1h.N0t1s.BackgroundTransparency = 1
+	M@1h.N0t1s.Title.TextTransparency = 1
+	M@1h.N0t1s.Size = UDim2.new(0, 0, 0, 0)
+	M@1h.N0t1s.Position = UDim2.new(0.5, 0, 0, -100)
+	M@1h.N0t1s.Visible = true
 
 
-	TweenService:Create(Main.Notice, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 280, 0, 35), Position = UDim2.new(0.5, 0, 0, -50), BackgroundTransparency = 0.5}):Play()
-	TweenService:Create(Main.Notice.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0.1}):Play()
+	TweenService:Create(M@1h.N0t1s, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 280, 0, 35), Position = UDim2.new(0.5, 0, 0, -50), BackgroundTransparency = 0.5}):Play()
+	TweenService:Create(M@1h.N0t1s.Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {TextTransparency = 0.1}):Play()
 end
 -- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA why :(
 --if not useStudio then
@@ -3989,12 +3989,12 @@ end
 
 task.delay(4, function()
 	zxcnmbULibrary.LoadConfiguration()
-	if Main:FindFirstChild('Notice') and Main.Notice.Visible then
-		TweenService:Create(Main.Notice, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 100, 0, 25), Position = UDim2.new(0.5, 0, 0, -100), BackgroundTransparency = 1}):Play()
-		TweenService:Create(Main.Notice.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
+	if M@1h:FindFirstChild('N0t1s') and M@1h.N0t1s.Visible then
+		TweenService:Create(M@1h.N0t1s, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 100, 0, 25), Position = UDim2.new(0.5, 0, 0, -100), BackgroundTransparency = 1}):Play()
+		TweenService:Create(M@1h.N0t1s.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 
 		task.wait(0.5)
-		Main.Notice.Visible = false
+		M@1h.N0t1s.Visible = false
 	end
 end)
 
