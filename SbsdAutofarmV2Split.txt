@@ -1,0 +1,13 @@
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Quorum Hub";
+    Text = "This script is shut down.";
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+    Duration = 5;
+})
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Quorum Hub";
+    Text = "Visit Quorum Hub for More Info.";
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150";
+    Duration = 5;
+})

