@@ -761,36 +761,45 @@ if secureMode and not customAssetId then
 end
 
 do
-	local AssetPath = RayfieldFolder.."/Assets"
-	local AssetBaseURL = "https://github.com/SiriusSoftwareLtd/Rayfield/blob/main/assets/"
+    local AssetPath = RayfieldFolder .. "/Assets"
 
-	local assetFiles = {
-		["111263549366178"] = AssetBaseURL.."111263549366178.png?raw=true",
-		["77891951053543"] = AssetBaseURL.."77891951053543.png?raw=true",
-		["78137979054938"] = AssetBaseURL.."78137979054938.png?raw=true",
-		["80503127983237"] = AssetBaseURL.."80503127983237.png?raw=true",
-		["10137832201"] = AssetBaseURL.."10137832201.png?raw=true",
-		["10137941941"] = AssetBaseURL.."10137941941.png?raw=true",
-		["11036884234"] = AssetBaseURL.."11036884234.png?raw=true",
-		["11413591840"] = AssetBaseURL.."11413591840.png?raw=true",
-		["11745872910"] = AssetBaseURL.."11745872910.png?raw=true",
-		["12577727209"] = AssetBaseURL.."12577727209.png?raw=true",
-		["18458939117"] = AssetBaseURL.."18458939117.png?raw=true",
-		["3259050989"] = AssetBaseURL.."3259050989.png?raw=true",
+    -- 🔥 FIX: используем raw.githubusercontent.com
+    local AssetBaseURL = "https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/assets/"
 
-		["3602733521"] = AssetBaseURL.."3602733521.png?raw=true",
-		["IconChevronTopMedium"] = AssetBaseURL.."IconChevronTopMedium.png?raw=true",
-		["4483362458"] = AssetBaseURL.."4483362458.png?raw=true",
-		["5587865193"] = AssetBaseURL.."5587865193.png?raw=true",
-		["IconMagnifyingGlass2"] = AssetBaseURL.."IconMagnifyingGlass2.png?raw=true",
-	}
+    local assetFiles = {
+        ["111263549366178"] = AssetBaseURL .. "111263549366178.png",
+        ["77891951053543"] = AssetBaseURL .. "77891951053543.png",
+        ["78137979054938"] = AssetBaseURL .. "78137979054938.png",
+        ["80503127983237"] = AssetBaseURL .. "80503127983237.png",
+        ["10137832201"] = AssetBaseURL .. "10137832201.png",
+        ["10137941941"] = AssetBaseURL .. "10137941941.png",
+        ["11036884234"] = AssetBaseURL .. "11036884234.png",
+        ["11413591840"] = AssetBaseURL .. "11413591840.png",
+        ["11745872910"] = AssetBaseURL .. "11745872910.png",
+        ["12577727209"] = AssetBaseURL .. "12577727209.png",
+        ["18458939117"] = AssetBaseURL .. "18458939117.png",
+        ["3259050989"] = AssetBaseURL .. "3259050989.png",
+        ["3602733521"] = AssetBaseURL .. "3602733521.png",
 
-	for id, _ in assetFiles do
-		customAssets[tostring(id)] = ""
-	end
+        ["IconChevronTopMedium"] = AssetBaseURL .. "IconChevronTopMedium.png",
+        ["4483362458"] = AssetBaseURL .. "4483362458.png",
+        ["5587865193"] = AssetBaseURL .. "5587865193.png",
+        ["IconMagnifyingGlass2"] = AssetBaseURL .. "IconMagnifyingGlass2.png",
+    }
 
-	local hasCustomAsset = type(getcustomasset) == "function"
-	local hasFilesystem = type(writefile) == "function" and type(makefolder) == "function" and type(isfile) == "function" and type(isfolder) == "function"
+    -- init table
+    for id, _ in assetFiles do
+        customAssets[tostring(id)] = ""
+    end
+
+    local hasCustomAsset =
+        type(getcustomasset) == "function"
+
+    local hasFilesystem =
+        type(writefile) == "function"
+        and type(makefolder) == "function"
+        and type(isfile) == "function"
+        and type(isfolder) == "function"
 
 if hasCustomAsset and hasFilesystem then
     local ok, err = pcall(function()
