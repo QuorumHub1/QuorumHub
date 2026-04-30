@@ -792,63 +792,104 @@ do
 	local hasCustomAsset = type(getcustomasset) == "function"
 	local hasFilesystem = type(writefile) == "function" and type(makefolder) == "function" and type(isfile) == "function" and type(isfolder) == "function"
 
-	if hasCustomAsset and hasFilesystem then
-		local ok, err = pcall(function()
-			ensureFolder(RayfieldFolder)
-			ensureFolder(AssetPath)
+if hasCustomAsset and hasFilesystem then
+    local ok, err = pcall(function()
 
-			local function nextMissing()
-				for id, _ in assetFiles do
-					if not isfile(AssetPath.."/"..tostring(id)..".png") then
-						return id
-					end
-				end
-				return nil
-			end
+        ensureFolder(RayfieldFolder)
+        ensureFolder(AssetPath)
 
-			if nextMissing() then
-				task.spawn(function()
-                    while true do
-                        local id = nextMissing()
-                        if not id then break end
+        -- 🔥 FIX: стабильный raw GitHub URL
+        local function fixUrl(url)
+            if typeof(url) ~= "string" then return nil end
 
-                        local response = requestFunc({
-                            Url = assetFiles[id],
+            local id = url:match("%d+")
+            if id then
+                return "https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/assets/" 
+                    .. tostring(id) .. ".png"
+            end
+
+            return url
+        end
+
+        local function nextMissing()
+            for id, _ in assetFiles do
+                local path = AssetPath .. "/" .. tostring(id) .. ".png"
+                if not isfile(path) then
+                    return id
+                end
+            end
+            return nil
+        end
+
+        -- 🔽 Download loop
+        if nextMissing() then
+            task.spawn(function()
+                while true do
+                    local id = nextMissing()
+                    if not id then break end
+
+                    local url = fixUrl(assetFiles[id])
+
+                    if not url then
+                        warn("Rayfield | Invalid URL for asset:", id)
+                        task.wait()
+                        continue
+                    end
+
+                    local response
+                    local success = pcall(function()
+                        response = requestFunc({
+                            Url = url,
                             Method = "GET"
                         })
+                    end)
 
-                        if response and response.Body then
-                            writefile(AssetPath.."/"..tostring(id)..".png", response.Body)
-                        else
-                            warn("Rayfield | Failed to download asset: "..tostring(id))
-                        end
-
-                        task.wait()
+                    if success and response and response.Body and type(response.Body) == "string" then
+                        writefile(
+                            AssetPath .. "/" .. tostring(id) .. ".png",
+                            response.Body
+                        )
+                    else
+                        warn("Rayfield | Failed to download asset:", id, "URL:", url)
                     end
-				end)
 
-				while nextMissing() do
-					task.wait(0.1)
-				end
-			end
+                    task.wait()
+                end
+            end)
 
-			for id, _ in assetFiles do
-				local success, asset = pcall(getcustomasset, AssetPath.."/"..tostring(id)..".png")
-				if success then
-					customAssets[tostring(id)] = asset
-				else
-					warn("Rayfield | Failed to load custom asset: "..tostring(id).." - "..tostring(asset))
-				end
-			end
-		end)
+            while nextMissing() do
+                task.wait(0.1)
+            end
+        end
 
-		if not ok then
-			warn("Rayfield | Failed to load custom assets: "..tostring(err))
-			secureNotify("asset_load_fail", "Rayfield", "Failed to load custom assets. UI images may not display correctly.")
-		end
-	else
-		secureNotify("no_getcustomasset", "Rayfield", "Your executor does not support getcustomasset. Some UI images may not render correctly.")
-	end
+        -- 🔽 Load custom assets
+        for id, _ in assetFiles do
+            local path = AssetPath .. "/" .. tostring(id) .. ".png"
+
+            if isfile(path) then
+                local success, asset = pcall(getcustomasset, path)
+
+                if success and asset then
+                    customAssets[tostring(id)] = asset
+                else
+                    warn("Rayfield | Failed to load custom asset:", id, asset)
+                end
+            else
+                warn("Rayfield | Missing file for asset:", id)
+            end
+        end
+
+    end)
+
+    if not ok then
+        warn("Rayfield | Failed to load custom assets:", tostring(err))
+        secureNotify("asset_load_fail", "Rayfield",
+            "Failed to load custom assets. UI images may not display correctly.")
+    end
+else
+    secureNotify("no_getcustomasset", "Rayfield",
+        "Your executor does not support getcustomasset. Some UI images may not render correctly.")
+end
 
 
 	Rayfield.Main.Shadow.Image.Image = customAssets[tostring(5587865193)]
